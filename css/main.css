@@ -38,16 +38,45 @@
 .hanger{
   position:absolute;
   width:100%;
-  height:80px;
-  bottom:65px;
+  height:110px;
+  bottom:50px;
   box-shadow: var(--shadow);
   left:0;
   background: white;
   border-radius: 12px;
-  
+  display:flex;
+  align-items: center;
 }
 
 
 .sec1{
   height:500px;
+}
+
+
+.h_nav_box{
+  width:200px;
+  height:80px;
+  margin: 0 50px;
+}
+
+.h_icon{
+  width:50px;
+  height:50px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1px auto;
+}
+
+
+.h_icon i{
+  font-size:30px;
+  color:var(--accent);
+}
+
+.h_nav_box h4{
+  margin:10px 0;
+  font-weight:500;
+  text-align: center;
 }
