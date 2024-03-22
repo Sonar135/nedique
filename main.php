@@ -45,9 +45,7 @@
                   </div>
 
 
-                  <div class="img">
-
-                  </div>
+                 
                 </div>
             </div>
             </div>

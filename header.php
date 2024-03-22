@@ -1,3 +1,28 @@
+<?php
+  ob_start();
+  session_start();
+  include 'connect.php';
+  if(isset($_SESSION["id"])){
+    $email=$_SESSION['email'];
+    $user_phone=$_SESSION['phone'];
+    $user_name=$_SESSION['Fname'];
+    $user_type=$_SESSION['user_type'];
+  }
+
+  
+
+?>
+
+<?php
+            if(isset($_SESSION["id"])){
+                if($user_type==''){
+                  
+                }
+            }
+            ?>
+
+
+
 
 
 
@@ -31,6 +56,8 @@
                     <a href="main.php">  home</a>
                   </li>
 
+               
+
           
                   
                   
@@ -39,34 +66,36 @@
             if(isset($_SESSION["id"])){
 
 
-                if($user_type=='planner'){
-                  echo '  <li>
-                  <a href="plan.php">Plan Event</a>
-                </li>
+                if($user_type=='doctor'){
+                  echo ' 
 
-                <li id="chat_menu">
-                <div class="tot '.$tot_none.'" >'.$total_num.'</div>
-                <a href="chat.php">chat</a>
-              </li>
+                  <li>
+             <a href="all_patients.php">All Students</a>
+           </li>
+
+
+           <li>
+           <a href="logout.php">Sign Out</a>
+         </li>
+           
               
               ';
                 }
 
-             
-
-             echo '   <li>
-             <a href="calendar_oop.php">calendar</a>
-           </li>
-           
-
          
-           ';
 
-           if($user_type=='planner'){
-            echo '  <li>
-            <a href="contact_admin.php"> Contact</a>
-           </li>';
-          }
+       
+            }
+
+
+            else{
+              echo '   <li>
+              <a href="student_auth.php">  Student</a>
+            </li>
+
+            <li>
+              <a href="doctor_auth.php">Doctor</a>
+            </li>';
             }
 
 
@@ -87,21 +116,7 @@
                
                  
 
-                    <?php
-            if(isset($_SESSION["id"])){
-                if($user_type=='admin'){
-                  echo '    <li>
-                  <a href="admin.php">admin</a>
-                 </li>';
-                }
-                echo '  <a href="logout.php">Logout</a>';
-
-            }
-
-            else{
-              echo '     <a href="reg.php">register/login</a>';
-            }
-            ?>
+              
 
    
                       

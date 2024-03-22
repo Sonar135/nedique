@@ -96,5 +96,17 @@
         </div>
     </div>
 
+    <div class="container sec2">
+        <div class="cent">
+            <div class="buttons">
+                <button>Blood Pressure</button>
+                <button>Diagnosis and Medication</button>
+                <button>Temperature</button>
+            </div>
+        </div>
+    </div>
+<?php
+    include "footer.php";
+?>
 </body>
 </html>

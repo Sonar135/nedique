@@ -146,3 +146,18 @@
     left:0;
     border-radius: 8px;
 }
+
+
+.buttons{
+    width:600px;
+    height:80px;
+    margin:10px auto;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.sec2{
+    height:200px;
+}

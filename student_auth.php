@@ -52,7 +52,8 @@
                     </div>
 
                     <div class="n_e">
-                        <input type="text" placeholder="Phone no" name="phone" id="sup_phone">
+                        <input type="text" placeholder="Phone no" name="phone" >
+                        <input type="text" placeholder="matric no" name="matric" >
                     </div>
 
                   
