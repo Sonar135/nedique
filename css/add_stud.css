@@ -1,5 +1,5 @@
 .auth{
-    height:500px;
+    height:550px;
     margin-top:50px;
 }
 
@@ -36,8 +36,29 @@
     background-position: 50% 30%;
 }
 
+#super{
+    background: url("../images/DTPGrants.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 30%;
+}
 
 
+#coor{
+    background: url("../images/istockphoto-1184196223-612x612.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 30%;
+}
+
+
+.phase2{
+    display:none;
+}
+
+.phase2, .phase1{
+    animation:fade_in .8s;
+}
 
 
 
@@ -69,13 +90,9 @@ button{
 }
 
 .auth .signup{
-    display:none;
+    /* display:none; */
 }
 
-
-.auth #student{
-    display:flex;
-}
 
 .ne_log{
     width:100%;
@@ -102,3 +119,43 @@ button{
 }
 
 
+textarea{
+    width:530px;
+    margin: 10px 25px;
+    border-bottom:1px solid var(--accent);
+    height:100px;
+    resize:none;
+}
+
+
+ textarea::placeholder{
+    color:black;
+    font-size:18px;
+}
+
+
+.nav_buttons{
+    width:300px;
+    height:60px;
+    margin:15px auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_buttons button{
+    padding:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    margin:0 40px;
+}
+
+
+.nav_buttons i{
+    font-size: 30px;
+    color:white;
+}

@@ -95,4 +95,54 @@ $("#my_input").on("input", function() {
     }
 });
 
+
+
+
+$("#left_btn").prop("disabled", true);
+
+$("#nav_btn").click((e) => {
+    e.preventDefault(); // Invoking the preventDefault function
+
+    $(".phase1").css("display", "none")
+    $(".phase2").css("display" , "block")
+    $("#left_btn").prop("disabled", false);
+    $("#nav_btn").prop("disabled", true);
+});
+
+
+
+
+$("#sign_up_btn").prop("disabled", true); // Initially disable the sign-up button
+
+$("input[type='text'], textarea, input[type='date'], input[type='email'], input[type='password']").on("input", function() { // Check all text input fields, textarea, and date input for changes
+    var allFilled = true;
+    $("input[type='text'], textarea, input[type='date'], input[type='email'], input[type='password']").each(function() {
+        if ($(this).val().trim() === "") { // Use trim() to remove whitespace
+            allFilled = false;
+            return false; // Exit the loop early if any input field, textarea, or date input is empty
+        }
+    });
+    
+    if (allFilled) {
+        $("#sign_up_btn").prop("disabled", false); // Enable the sign-up button if all input fields, textarea, and date input have values
+    } else {
+        $("#sign_up_btn").prop("disabled", true); // Disable the sign-up button if any input field, textarea, or date input is empty
+    }
+});
+
+
+
+
+
+
+
+$("#left_btn").click((e) => {
+    e.preventDefault(); // Invoking the preventDefault function
+    $(".phase1").css("display", "block")
+    $(".phase2").css("display", "none")
+    $("#left_btn").prop("disabled", true);
+    $("#nav_btn").prop("disabled", false);
+});
+
+
 })

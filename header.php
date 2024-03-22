@@ -73,11 +73,15 @@
              <a href="all_patients.php">All Students</a>
            </li>
 
+           <li>
+           <a href="new_student.php">New student</a>
+         </li>
 
            <li>
            <a href="logout.php">Sign Out</a>
          </li>
            
+        
               
               ';
                 }
