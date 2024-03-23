@@ -22,6 +22,12 @@
 
 <?php
 
+if(isset($_GET["success"])){
+    echo '  <div class="message" id="message">
+   reading submitted
+</div>';
+}
+
     if(isset($_POST["bp"])){
         $systolic=$_POST["systolic"];
         $diatolic=$_POST["diastolic"];
@@ -38,7 +44,34 @@
             (' $systolic', '$diatolic', '$matric', NOW() )");
 
             if($insert){
-                header("location: student_profile.php?r=$id");
+                header("location: student_profile.php?success&r=$id");
+            }
+        }
+    }
+
+
+
+
+
+
+
+    if(isset($_POST["temp"])){
+        $temp=$_POST["temperature"];
+       
+
+
+        if($temp=="" ){
+            echo '  <div class="message" id="message">
+            please fill all fields
+        </div>';
+        }
+
+        else{
+            $insert=mysqli_query($conn, "INSERT into temp (temperature, student, date) values 
+            (' $temp', '$matric', NOW() )");
+
+            if($insert){
+                header("location: student_profile.php?success&r=$id");
             }
         }
     }
@@ -116,6 +149,38 @@
        
 
          
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="temp_overlay">
+    <div class="container edit">
+        <div class="cent">
+         
+                <div class="form_cont">
+                <div class="exit">
+                <i class="fa-solid fa-xmark"></i>
+                </div>
+                <h1>Update temperature</h1>
+
+              <form action="" method="post"> <div class="input">
+                    <input type="text"  name="temperature" placeholder="temperature (in degrees celcius)">
+               
+                </div>
+
+              
+
+                <button name="temp">submit</button></form> 
+            </div>
+                
 
 
         </div>
@@ -215,7 +280,7 @@
             <div class="buttons">
                 <button id="blood_toggle">Blood Pressure</button>
                 <button id="toggle">Diagnosis and Medication</button>
-                <button >Temperature</button>
+                <button id="temp_toggle">Temperature</button>
             </div>
         </div>
     </div>

@@ -49,9 +49,15 @@ $('#blood_toggle').click(()=>{
     $(".blood_overlay").css("display", "flex");
 })
 
+$('#temp_toggle').click(()=>{
+    $(".temp_overlay").css("display", "flex");
+})
+
+
 $(".exit").click(()=>{
     $(".edit_overlay").css("display", "none");
     $(".blood_overlay").css("display", "none");
+    $(".temp_overlay").css("display", "none");
 })
 
 

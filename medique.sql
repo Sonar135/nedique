@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 04:39 PM
+-- Generation Time: Mar 23, 2024 at 05:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -95,6 +95,29 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`id`, `Fname`, `phone`, `email`, `user_type`, `nationality`, `dob`, `gender`, `matric_no`, `department`, `blood_group`, `blood_type`, `password`) VALUES
 (1, 'wilson ayoola', '08109495127', 'vefidi135@gmail.com', 'student', 'Nigerian', '2003-03-01', 'male', '19/1306', 'computer science', 'A+', 'AA', '$2y$10$Nt5HDZmiIfdxLcdRMvySkOfG71CXv0djPm7tDghDOoAMAEuV.HzQy');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp`
+--
+
+CREATE TABLE `temp` (
+  `id` int(11) NOT NULL,
+  `student` varchar(255) DEFAULT NULL,
+  `temperature` float DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `temp`
+--
+
+INSERT INTO `temp` (`id`, `student`, `temperature`, `date`) VALUES
+(1, '19/1306', 45.3, '2024-03-23 17:02:34'),
+(2, '19/1306', 36, '2024-03-23 17:02:55'),
+(3, '19/1306', 40, '2024-03-23 17:03:02'),
+(4, '19/1306', 38, '2024-03-23 17:03:10');
+
 --
 -- Indexes for dumped tables
 --
@@ -118,6 +141,12 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `temp`
+--
+ALTER TABLE `temp`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -138,6 +167,12 @@ ALTER TABLE `doctors`
 --
 ALTER TABLE `students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `temp`
+--
+ALTER TABLE `temp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
