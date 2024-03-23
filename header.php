@@ -7,6 +7,12 @@
     $user_phone=$_SESSION['phone'];
     $user_name=$_SESSION['Fname'];
     $user_type=$_SESSION['user_type'];
+
+   
+      if($user_type=='student'){
+        $user_matric=$_SESSION['matric_no'];
+      }
+  
   }
 
   
@@ -76,6 +82,25 @@
            <li>
            <a href="new_student.php">New student</a>
          </li>
+
+           <li>
+           <a href="logout.php">Sign Out</a>
+         </li>
+           
+        
+              
+              ';
+                }
+
+
+                if($user_type=='student'){
+                  echo ' 
+
+                  <li>
+             <a href="student_account.php">profile</a>
+           </li>
+
+          
 
            <li>
            <a href="logout.php">Sign Out</a>

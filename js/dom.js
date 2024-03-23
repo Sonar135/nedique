@@ -44,9 +44,32 @@ $('#toggle').click(()=>{
     $(".edit_overlay").css("display", "flex");
 })
 
+
+$('#blood_toggle').click(()=>{
+    $(".blood_overlay").css("display", "flex");
+})
+
 $(".exit").click(()=>{
     $(".edit_overlay").css("display", "none");
+    $(".blood_overlay").css("display", "none");
 })
+
+
+$(".right_btn").click(()=>{
+    $(".line").css("display", "block");
+    $(".bar").css("display", "none");
+    $(".right_btn").css("background", "#37215f62")
+    $(".left_btn").css("background", "#7856b3")
+})
+
+
+$(".left_btn").click(()=>{
+    $(".bar").css("display", "block");
+    $(".line").css("display", "none");
+    $(".left_btn").css("background", "#37215f62")
+    $(".right_btn").css("background", "#7856b3")
+})
+
 
 
 

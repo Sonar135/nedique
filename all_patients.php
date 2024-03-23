@@ -6,6 +6,54 @@
 
 
 
+<?php
+    $students="";
+    $get=mysqli_query($conn, "SELECT * from students");
+
+
+    while($row=mysqli_fetch_array($get)){
+        $name=$row["Fname"];
+        $matric=$row["matric_no"];
+        $gender=$row["gender"];
+        $gender=$row["gender"];
+        $dob=$row["dob"];
+        $id=$row["id"];
+        $birthdate = new DateTime($dob);
+        $today = new DateTime();
+        $age = $today->diff($birthdate)->y;
+
+
+        $students.='  <div class="card">
+        <div class="profile">
+            <div class="circle">
+            <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="data">
+                '.$name.'
+            </div>
+
+            <div class="data low">
+            '.$matric.'
+            </div>
+
+            <div class="data low">
+            '.$gender.'
+            </div>
+
+            <div class="data low">
+            '.$age.'
+            </div>
+
+           <a href="student_profile.php?r='.$id.'"> <button>See Profile</button></a>
+        </div>
+    </div>';
+
+    }
+?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -37,48 +85,12 @@
 
     <div class="container sec1">
        <div class="cent">
-        <div class="card">
-            <div class="profile">
-                <div class="circle">
-                <i class="fa-solid fa-user"></i>
-                </div>
-
-                <div class="data">
-                    Efidi Victor
-                </div>
-
-                <div class="data low">
-                   19/1306
-                </div>
-
-                <div class="data low">
-                  400lvl
-                </div>
-
-                <div class="data low">
-                  16yrs old
-                </div>
-
-               <a href="student_profile.php?r=1"> <button>See Profile</button></a>
-            </div>
-        </div>
-        
-        <div class="card">
-            
-            </div>
-            <div class="card">
-            
-            </div>
-            <div class="card">
-            
-            </div>
-            <div class="card">
-            
-            </div>
-            <div class="card">
-            
-            </div>
+            <?php echo $students?>
        </div>
     </div>
+
+    <?php
+    include "footer.php";
+?>
 </body>
 </html>

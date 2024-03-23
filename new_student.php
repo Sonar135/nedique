@@ -78,24 +78,28 @@
         $nationality=$_POST['nationality'];
         $dob=$_POST['dob'];
         $gender=$_POST['gender'];
-        $records=  htmlentities( $_POST['medical_records']) ;
-        $prefix="doc";
+        $matric_no=$_POST['matric'];
+        $department=$_POST['department'];
+        $blood_group=$_POST['blood_group'];
+        $blood_type=$_POST['blood_type'];
+
+
 
 
         
 
     
 
-        if(emptysignup($email, $fname, $phone, $password, $confirm, $prefix)!== false){
+        if(emptysignup($email, $fname, $phone, $password, $confirm)!== false){
             
             
-            header("location: add_doc.php?error=emptyfield");
+            header("location: new_student.php?error=emptyfield");
             exit();
  
         }
 
         if(invalid_email($email)!== false){
-            header("location: add_doc.php?error=invalidemail");
+            header("location: new_student.php?error=invalidemail");
         //     echo '<div class="message" id="message">
         //     error: INVALID EMAIL
         // </div>';
@@ -103,24 +107,24 @@
         }
 
         if (invalid_password($password)) {
-            header("location: add_doc.php?error=invalid_pass");
+            header("location: new_student.php?error=invalid_pass");
             exit();
  
         }
 
         if(pwd_match($password, $confirm)!== false){
       
-            header("location: add_doc.php?error=pwd_not_match");
+            header("location: new_student.php?error=pwd_not_match");
             exit();
         }
 
-        if(doc_email_exists($conn, $email)!== false){
-            header("location: add_doc.php?error=email_in_use");
+        if(matric_exists($conn, $matric_no)!== false){
+            header("location: new_student.php?error=email_in_use");
       
             exit();
         }
 
-        create_doctor($conn, $email, $fname,  $phone, $password, $confirm, $nationality, $dob, $gender, $prefix );
+        create_student($conn, $email, $fname,  $phone, $password, $nationality, $dob, $gender, $matric_no, $department, $blood_group, $blood_type );
 
      
 
@@ -131,42 +135,7 @@
 ?>
 
 
-<?php
-    if(isset($_POST['login'])){
-        $email=$_POST['email'];
-        $password=$_POST['password'];
 
-
-
-        
-
-    if(emptylogin($email, $password)){
-        header("location: add_doc.php?error=empty_login");
-        exit();
-    }
-
-    login($conn, $email, $password);
-    }
-
-
-    if(isset($_GET['error'])){
-        if($_GET['error']=='wrongLogin'){
-            echo '  <div class="message" id="message">
-            username or password incorrect
-        </div>';
-        }
-    }
-
-    if(isset($_GET['error'])){
-        if($_GET['error']=='empty_login'){
-            echo '  <div class="message" id="message">
-            enter username and password
-        </div>';
-        }
-    }
-
-    
-?>
 
 
 
@@ -253,19 +222,19 @@
 
                     <div class="n_e">
                         <input type="text" placeholder="gender" name="gender">
-                        <input type="text" placeholder="gender" name="gender">
+                        <!-- <input type="text" placeholder="gender" name="gender"> -->
                        
                     </div>
 
                     <div class="n_e">
-                        <input type="text" placeholder="matric no" name="gender">
-                        <input type="text" placeholder="department" name="gender">
+                        <input type="text" placeholder="matric no" name="matric">
+                        <input type="text" placeholder="department" name="department">
                        
                     </div>
                  
                     <div class="n_e">
-                        <input type="text" placeholder="bloog group" name="gender">
-                        <input type="text" placeholder="blood type" name="gender">
+                        <input type="text" placeholder="bloog group" name="blood_group">
+                        <input type="text" placeholder="blood type" name="blood_type">
                        
                     </div>
                   

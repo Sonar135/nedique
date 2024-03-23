@@ -7,6 +7,51 @@
 
 
 
+
+
+<?php
+
+include 'functions.php';
+
+
+
+    if(isset($_POST['login'])){
+        $matric_no=$_POST['matric'];
+        $password=$_POST['password'];
+
+
+
+        
+
+    if(emptylogin($matric_no, $password)){
+        header("location: student_auth.php?error=empty_login");
+        exit();
+    }
+
+    login($conn, $matric_no, $password);
+    }
+
+
+    if(isset($_GET['error'])){
+        if($_GET['error']=='wrongLogin'){
+            echo '  <div class="message" id="message">
+            username or password incorrect
+        </div>';
+        }
+    }
+
+    if(isset($_GET['error'])){
+        if($_GET['error']=='empty_login'){
+            echo '  <div class="message" id="message">
+            enter username and password
+        </div>';
+        }
+    }
+
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +93,7 @@
 
                     <div class="n_e">
                         <input type="text" placeholder="full name (surname first)" name="name">
-                        <input type="email" placeholder="Email" name="email">
+                        <input type="text" placeholder="matric no" name="matric">
                     </div>
 
                     <div class="n_e">
@@ -85,7 +130,7 @@
                   
 
                     <div class="ne_log">
-                        <input type="email" placeholder="matric/no" name="matric">
+                        <input type="text" placeholder="matric/no" name="matric">
                     </div>
 
                     <div class="ne_log">

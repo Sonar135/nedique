@@ -19,6 +19,7 @@
     --shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     --accent: #7856b3;
     --accent_hover:#37215f;
+    --disabled:#37215f62;
 }
 
 h1{

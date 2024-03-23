@@ -3,11 +3,12 @@
 
 
     
-    function create_user($conn, $email, $fname, $phone, $password){
+    function create_student($conn, $email, $fname, $phone, $password, $nationality, $dob, $gender, $matric_no, $department, $blood_group, $blood_type){
 
+        $user_type="student";
  
   
-        $insert= "INSERT INTO users (Fname,  phone,  email,  password) VALUES (?,?,?,?)";   
+        $insert= "INSERT INTO students (Fname,  phone,  email,  password, user_type, nationality, dob, gender, matric_no, department, blood_group, blood_type) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";   
         
       
 
@@ -15,18 +16,18 @@
         $stmt2=mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt2, $insert)){
-            header("location: auth.php?error=stmtfailed");
+            header("location: new_student.php?error=stmtfailed");
             exit();
         }
     
         
         $hashed_pwd=password_hash($password, PASSWORD_DEFAULT);
 
-        mysqli_stmt_bind_param($stmt2, 'ssss', $fname, $phone,  $email, $hashed_pwd);
+        mysqli_stmt_bind_param($stmt2, 'ssssssssssss', $fname, $phone,  $email, $hashed_pwd, $user_type, $nationality, $dob, $gender, $matric_no, $department, $blood_group, $blood_type);
         mysqli_stmt_execute($stmt2);
         mysqli_stmt_close($stmt2);
         
-        header("location: auth.php?error=success");
+        header("location: new_student.php?error=success");
         exit();
     }
 
@@ -98,17 +99,48 @@
     function email_exists($conn, $email){
         $result="";
     
-        $query="SELECT * FROM users WHERE email=?";
+        $query="SELECT * FROM students WHERE email=?";
     
         $stmt=mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $query)){
-            header("location: auth.php?error=stmtfailed");
+            header("location: new_student.php?error=stmtfailed");
             exit();
         }
     
         
         mysqli_stmt_bind_param($stmt, "s", $email);
+        mysqli_stmt_execute($stmt);
+        $result= mysqli_stmt_get_result($stmt);
+    
+        if($row=mysqli_fetch_assoc($result)){
+            return $row;
+        }
+
+        else{
+            $result= false;
+            return $result;
+        }
+
+        mysqli_stmt_close($stmt);
+    }
+
+
+
+    function matric_exists($conn, $matric){
+        $result="";
+    
+        $query="SELECT * FROM students WHERE matric_no=?";
+    
+        $stmt=mysqli_stmt_init($conn);
+
+        if(!mysqli_stmt_prepare($stmt, $query)){
+            header("location: new_student.php?error=stmtfailed");
+            exit();
+        }
+    
+        
+        mysqli_stmt_bind_param($stmt, "s", $matric);
         mysqli_stmt_execute($stmt);
         $result= mysqli_stmt_get_result($stmt);
     
@@ -132,11 +164,11 @@
 
     
 
-    function login($conn, $email, $password){
-        $uidexist= email_exists($conn, $email);
+    function login($conn, $matric_no, $password){
+        $uidexist= matric_exists($conn, $matric_no);
 
         if($uidexist===false){
-            header("location: auth.php?error=wrongLogin");
+            header("location: student_auth.php?error=wrongLogin");
             exit();
         }
 
@@ -144,7 +176,7 @@
         $checkedpwd=password_verify($password, $pwdHashed);
 
         if($checkedpwd===false){
-            header("location: auth.php?error=wrongLogin");
+            header("location: student_auth.php?error=wrongLogin");
             exit();
         }
 
@@ -156,6 +188,7 @@
             $_SESSION["name"]=$uidexist["name"];
             $_SESSION['phone']=$uidexist['phone'];
             $_SESSION["Fname"]=$uidexist["Fname"];
+            $_SESSION["matric_no"]=$uidexist["matric_no"];
             $_SESSION["user_type"]=$uidexist["user_type"];
           
      
@@ -163,7 +196,7 @@
          
        
 
-            header("location: schools.php");
+            header("location: student_account.php");
             exit();
         }
     }
@@ -188,7 +221,7 @@
         $stmt2=mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt2, $insert)){
-            header("location: doctor_auth.php?error=stmtfailed");
+            header("location: doctor_new_student.php?error=stmtfailed");
             exit();
         }
     
@@ -199,7 +232,7 @@
         mysqli_stmt_execute($stmt2);
         mysqli_stmt_close($stmt2);
         
-        header("location: doctor_auth.php?error=success");
+        header("location: doctor_new_student.php?error=success");
         exit();
     }
 
@@ -223,7 +256,7 @@
         $stmt=mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $query)){
-            header("location: auth.php?error=stmtfailed");
+            header("location: new_student.php?error=stmtfailed");
             exit();
         }
     

@@ -1,0 +1,11 @@
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+   
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
