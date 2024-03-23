@@ -36,3 +36,51 @@ create table students(
     'June' => ['systolic' => 120, 'diastolic' => 80],
     'July' => ['systolic' => 120, 'diastolic' => 80],
     'Bastard' => ['systolic' => 120, 'diastolic' => 80],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+if(isset($_GET["r"])){
+    $id=$_GET["r"];
+
+
+    $get_student=mysqli_query($conn, "SELECT * from students where id='$id'");
+
+    $matric=mysqli_fetch_array($get_student)["matric_no"];
+
+    $bp = [];
+    $get = mysqli_query($conn, "SELECT * from bp where student='$matric'");
+
+    while($row = mysqli_fetch_array($get)){
+        $date = $row["date"];
+        $systolic = $row["systolic"];
+        $diastolic = $row["diastolic"];
+
+        $bp[$date] = ["systolic" => $systolic, "diastolic" => $diastolic];
+    }
+
+    $bloodPressureData = $bp;
+
+echo json_encode($bloodPressureData);
+
+
+}

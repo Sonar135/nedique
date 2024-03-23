@@ -13,7 +13,7 @@
                 datasets: [{
                     label: 'Temperature (°C)',
                     data: temperatureData,
-                    borderColor: '#37215f',
+                    borderColor: '#5214c47b',
                     fill: false
                 }]
             },

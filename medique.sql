@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 05:25 PM
+-- Generation Time: Mar 23, 2024 at 10:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -69,6 +69,29 @@ INSERT INTO `doctors` (`id`, `Fname`, `phone`, `email`, `password`, `user_type`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `medication`
+--
+
+CREATE TABLE `medication` (
+  `id` int(11) NOT NULL,
+  `medication` varchar(255) DEFAULT NULL,
+  `problem` varchar(255) DEFAULT NULL,
+  `test` varchar(255) DEFAULT NULL,
+  `cost` varchar(255) DEFAULT NULL,
+  `date` varchar(255) NOT NULL,
+  `student` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `medication`
+--
+
+INSERT INTO `medication` (`id`, `medication`, `problem`, `test`, `cost`, `date`, `student`) VALUES
+(1, ' vitamin c', ' malaria', ' ', ' 1000', '2024-03-23 19:39:46', '19/1306');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -93,7 +116,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `Fname`, `phone`, `email`, `user_type`, `nationality`, `dob`, `gender`, `matric_no`, `department`, `blood_group`, `blood_type`, `password`) VALUES
-(1, 'wilson ayoola', '08109495127', 'vefidi135@gmail.com', 'student', 'Nigerian', '2003-03-01', 'male', '19/1306', 'computer science', 'A+', 'AA', '$2y$10$Nt5HDZmiIfdxLcdRMvySkOfG71CXv0djPm7tDghDOoAMAEuV.HzQy');
+(1, 'wilson ayoola', '08109495127', 'vefidi135@gmail.com', 'student', 'Nigerian', '2003-03-01', 'male', '19/1306', 'computer science', 'A+', 'AA', '$2y$10$Nt5HDZmiIfdxLcdRMvySkOfG71CXv0djPm7tDghDOoAMAEuV.HzQy'),
+(2, 'test', '08109495127', 'test@test.com', 'student', 'french', '2004-06-08', 'female', '19/2548', 'CT', 'A+', 'AA', '$2y$10$RigAPXBleSDXRv/AXhPnLODc3588hVBoKRe4qrspwwMUx7.10Sc7W');
 
 -- --------------------------------------------------------
 
@@ -135,6 +159,12 @@ ALTER TABLE `doctors`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `medication`
+--
+ALTER TABLE `medication`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -163,10 +193,16 @@ ALTER TABLE `doctors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `medication`
+--
+ALTER TABLE `medication`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `temp`

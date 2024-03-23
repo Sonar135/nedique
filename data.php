@@ -15,10 +15,11 @@ if(isset($_SESSION["id"])){
 
         $bp[$date] = ["systolic" => $systolic, "diastolic" => $diastolic];
     }
-}
 
-$bloodPressureData = $bp;
+    $bloodPressureData = $bp;
 
 echo json_encode($bloodPressureData);
+}
+
 ?>
 

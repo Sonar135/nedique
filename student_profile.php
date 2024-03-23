@@ -28,6 +28,12 @@ if(isset($_GET["success"])){
 </div>';
 }
 
+if(isset($_GET["med_success"])){
+    echo '  <div class="message" id="message">
+   submitted
+</div>';
+}
+
     if(isset($_POST["bp"])){
         $systolic=$_POST["systolic"];
         $diatolic=$_POST["diastolic"];
@@ -75,7 +81,37 @@ if(isset($_GET["success"])){
             }
         }
     }
+
+
+
+    if(isset($_POST["med"])){
+        $medication=$_POST["medication"];
+        $problem=$_POST["problem"];
+        $cost=$_POST["cost"];
+       
+
+
+        if($medication=="" or $problem=="" or $cost=="" ){
+            echo '  <div class="message" id="message">
+            please fill all fields
+        </div>';
+        }
+
+        else{
+            $insert=mysqli_query($conn, "INSERT into medication (medication, problem,  cost, student, date) values 
+            (' $medication', ' $problem',  ' $cost', '$matric', NOW() )");
+
+            if($insert){
+                header("location: student_profile.php?med_success&r=$id");
+            }
+        }
+    }
 ?>
+
+
+
+
+
 
 
 
@@ -102,15 +138,15 @@ if(isset($_GET["success"])){
                 <h1>Medication Form</h1>
 
               <form action="" method="post"> <div class="input">
-                    <input type="text"  name="name" placeholder="Problem">
-                    <input type="email"  name="email" placeholder="Test Done (leave blank if none)">
+                    <input type="text"  name="problem" placeholder="Problem">
                 </div>
 
                 <div class="input">
-                    <input type="text"  name="phone" placeholder="medication to be taken">
+                    <input type="text"  name="medication" placeholder="medication to be taken">
+                    <input type="text"  name="cost" placeholder="total cost">
                 </div>
 
-                <button name="edit_sup">submit</button></form> 
+                <button name="med">submit</button></form> 
             </div>
                
        
@@ -279,13 +315,17 @@ if(isset($_GET["success"])){
         <div class="cent">
             <div class="buttons">
                 <button id="blood_toggle">Blood Pressure</button>
-                <button id="toggle">Diagnosis and Medication</button>
+                <button id="toggle">Prescribe Medication</button>
                 <button id="temp_toggle">Temperature</button>
             </div>
         </div>
     </div>
+
+  
+
 <?php
     include "footer.php";
 ?>
 </body>
+
 </html>

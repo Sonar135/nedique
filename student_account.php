@@ -8,6 +8,34 @@
     $row=mysqli_fetch_array($get);
 
 
+    $medication="";
+
+    $get_medication= mysqli_query($conn,"SELECT * from medication where student='$user_matric'");
+
+
+    while($med_row= mysqli_fetch_array($get_medication)){
+        $med=$med_row["medication"];
+        $problem=$med_row["problem"];
+        $cost=$med_row["cost"];
+        $datetimeString=$med_row["date"];
+        $dateTime = new DateTime($datetimeString);
+        $date = $dateTime->format('Y-m-d');
+
+
+        $medication.='  <div class="card">
+        <h4>'.$date.'</h4>
+        <h4>Illness: '.$problem.'</h4>
+        <h4>MEDICATION GIVEN:</h4>
+
+        <div class="med_box">
+            <h4>'.$med.'</h4>
+          
+        </div>
+        <h4>AMOUNT TO PAY: ₦'.$cost.'</h4>
+        <span></span>
+    </div>';
+    }
+
 ?>
 
 
@@ -133,6 +161,17 @@
             <!-- <canvas id="pieChart"></canvas> -->
             <!-- <canvas id="TempbarChart"></canvas> -->
         </div>
+        </div>
+    </div>
+
+    <div class="container sec5">
+        <h1>medication and bills</h1>
+        <div class="cent">
+          
+        <?php echo $medication?>
+
+
+            
         </div>
     </div>
 

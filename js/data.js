@@ -12,13 +12,13 @@ fetch('data.php')
                 datasets: [{
                     label: 'Systolic',
                     data: bpData.map(bp => bp.systolic),
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderColor: '#a584e2',
                     fill: false
                 },
                 {
                     label: 'Diastolic',
                     data: bpData.map(bp => bp.diastolic),
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderColor: '#ffa0b4',
                     fill: false
                 }]
             },
@@ -59,15 +59,15 @@ fetch('data.php')
                 datasets: [{
                     label: 'Systolic',
                     data: bpData.map(bp => bp.systolic),
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: '#a584e2',
+                    borderColor: '#a584e2',
                     borderWidth: 1
                 },
                 {
                     label: 'Diastolic',
                     data: bpData.map(bp => bp.diastolic),
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: '#ffa0b4',
+                    borderColor: '#ffa0b4',
                     borderWidth: 1
                 }]
             },
